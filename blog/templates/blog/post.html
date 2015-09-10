@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<h1>{{ post.title }}</h1>
+{% if user.id == post.author.id %}
+<a href="{% url 'blog:modifyPost' post.id %}">Edit</a>
+<a href="{% url 'blog:deletePost' post.id %}">Delete</a>
+{% endif %}
+<p>Posted By {{ post.author.username }}</p>
+<p>{{ post.body }}</p>
+
+{% include 'blog/comments/index.html' %}
+
+{% endblock %}

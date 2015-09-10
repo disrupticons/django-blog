@@ -1,0 +1,15 @@
+{{ comment.body }} - {{ comment.author.username }}
+<a href="" class="replyToggle">Reply</a>
+{% if user.id == comment.author.id %}
+{% include 'blog/comments/edit_form.html' %}
+<a href="" class="editToggle">Edit</a>
+<a href="{% url 'blog:deleteComment' comment.id %}?next={% url 'blog:post' post.id %}">Delete</a>
+{% endif %}
+{% include 'blog/comments/reply_form.html' %}
+<ul>
+{% for reply in comment.comment_set.all %}
+	<li>
+		{% include 'blog/comments/show_comment.html' with comment=reply %}
+	</li>
+{% endfor %}
+</ul>

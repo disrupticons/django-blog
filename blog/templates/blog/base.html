@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}Simple Blog{% endblock %}</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/semantic.min.css' %}">
+	<script type="text/javascript" src="{% static 'blog/js/jquery.js' %}"></script>
+	<script type="text/javascript" src="{% static 'blog/js/index.js' %}"></script>
+</head>
+<body>
+<section id="main-content">
+{% block content %}
+{% endblock %}
+</section>
+</body>
+</html>

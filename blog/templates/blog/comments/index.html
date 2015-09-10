@@ -1,0 +1,12 @@
+<h2>Comments</h2>
+<ul>
+{% for comment in post.comment_set.all %}
+	<li>
+		{% include 'blog/comments/show_comment.html' %}
+	</li>
+{% empty %}
+	<li>No Commments</li>
+{% endfor %}
+</ul>
+
+{% include 'blog/comments/add_comment_form.html' %}

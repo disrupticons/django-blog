@@ -1,0 +1,5 @@
+<form class="editForm" action="{% url 'blog:modifyComment' comment.id %}?next={% url 'blog:post' post.id %}" method="POST">
+	{% csrf_token %}
+	<textarea name="body">{{ comment.body }}</textarea>
+	<input type="submit" value="Edit">
+</form>

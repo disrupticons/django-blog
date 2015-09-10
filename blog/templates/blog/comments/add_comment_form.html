@@ -1,0 +1,6 @@
+<h2>Add Comment</h2>
+<form action="{% url 'blog:postComment' post.id %}?next={% url 'blog:post' post.id %}" method="POST">
+	{% csrf_token %}
+	<textarea name="body"></textarea>
+	<input type="submit" value="Post Comment">
+</form>
