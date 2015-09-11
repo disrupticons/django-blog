@@ -31,10 +31,10 @@
   <div class="column">
     <h2 class="ui teal image header">
       <div class="content">
-        Log-in to your account
+        Create New Account
       </div>
     </h2>
-    <form class="ui large form error" action="{{ app_path }}" method="POST">
+    <form class="ui large form error" action="" method="POST">
       {% csrf_token %}
       <div class="ui stacked segment">
         <div class="field">
@@ -44,30 +44,28 @@
         </div>
         <div class="field">
           <div class="ui input">
-            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="password1" placeholder="Password" required>
             <input type="hidden" name="next" value="{{ next }}" />
           </div>
         </div>
-        <input type="submit" value="Login" class="ui fluid large teal submit button">
+        <div class="field">
+          <div class="ui input">
+            <input type="password" name="password2" placeholder="Password Confirmation" required>
+            <input type="hidden" name="next" value="{{ next }}" />
+          </div>
+        </div>
+        <input type="submit" value="Sign Up" class="ui fluid large teal submit button">
       </div>
 
-      {% if form.non_field_errors %}
+      {% if form.errors %}
       <div class="ui error message">
-        <ul class="list">
-        {% for error in form.non_field_errors %}
-        <li>
-            {{ error }}
-        </li>
+        {% for key,error in form.errors.iteritems %}
+          {{ error }}
         {% endfor %}
-        </ul>
       </div>
       {% endif %}
-
     </form>
 
-    <div class="ui message">
-      New to us? <a href="{% url 'register' %}">Sign Up</a>
-    </div>
   </div>
 </div>
 
