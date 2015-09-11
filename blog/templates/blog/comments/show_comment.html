@@ -7,9 +7,9 @@
 {% endif %}
 {% include 'blog/comments/reply_form.html' %}
 <ul>
-{% for reply in comment.comment_set.all %}
+{% for reply in comment.replies.all %}
 	<li>
-		{% include 'blog/comments/show_comment.html' with comment=reply %}
+		{% include 'blog/comments/show_comment.html' with comment=reply.reply %}
 	</li>
 {% endfor %}
 </ul>

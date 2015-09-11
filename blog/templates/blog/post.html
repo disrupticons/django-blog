@@ -1,5 +1,11 @@
 {% extends 'blog/base.html' %}
 
+{% load staticfiles %}
+
+{% block morestaticfiles %}
+<script type="text/javascript" src="{% static 'blog/js/index.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 
 <h1>{{ post.title }}</h1>

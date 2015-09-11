@@ -1,6 +1,12 @@
 <form class="replyForm" action="{% url 'blog:replyToComment' comment.id %}?next={% url 'blog:post' post.id %}" method="POST">
 	{% csrf_token %}
-	<label>Reply</label>
-	<textarea name="body"></textarea>
-	<input type="submit" value="Post Reply">
+	<div class="ui form">
+		<div class="field">
+			<label>Reply</label>
+			<textarea name="body"></textarea>
+		</div>
+		<div class="field">
+			<input class="ui button" type="submit" value="Post Reply">
+		</div>
+	</div>
 </form>

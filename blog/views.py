@@ -5,7 +5,7 @@ from django.http import Http404
 
 from django.contrib.auth.decorators import login_required
 
-from .models import Post, Comment
+from .models import Post, Comment, PostComment, Reply
 
 class IndexView(generic.ListView):
 	template_name = 'blog/index.html'
@@ -60,14 +60,15 @@ def addComment(request, post_id=None, comment_id=None):
 	next = getNextURL(request)
 	if(request.method != 'POST'):
 		raise Http404();
+	new_comment = Comment.objects.create(author=request.user, body=request.POST['body'])
 	if(post_id):
 		# add comment to post
 		post = get_object_or_404(Post, pk=post_id)
-		Comment.objects.create(author=request.user, body=request.POST['body'], parent_post=post)
+		PostComment.objects.create(post=post, comment=new_comment)
 	elif(comment_id):
 		# add reply to comment
 		comment = get_object_or_404(Comment, pk=comment_id)
-		Comment.objects.create(author=request.user, body=request.POST['body'], parent_comment=comment)
+		Reply.objects.create(comment=comment, reply=new_comment)
 	return redirect(next)
 
 @login_required

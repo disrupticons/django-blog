@@ -6,12 +6,21 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/semantic.min.css' %}">
 	<script type="text/javascript" src="{% static 'blog/js/jquery.js' %}"></script>
-	<script type="text/javascript" src="{% static 'blog/js/index.js' %}"></script>
+	{% block morestaticfiles %}{% endblock %}
 </head>
 <body>
-<section id="main-content">
-{% block content %}
-{% endblock %}
-</section>
+<div class="ui grid">
+	<div class="three wide column">
+		<div class="ui fixed vertical menu">
+			<a class="item" href="{% url 'blog:addPost' %}">Write New Post</a>
+			<a class="item" href="{% url 'blog:index' %}">Blog</a>
+			<a class="item" href="{% url 'logout' %}">Logout</a>
+		</div>
+	</div>
+	<div id="main-content" class="nine wide column">
+	{% block content %}
+	{% endblock %}
+	</div>
+</div>
 </body>
 </html>

@@ -2,15 +2,6 @@
 
 {% block content %}
 
-<h1>Links</h1>
-<ul>
-	<li>
-		<a href="{% url 'blog:addPost' %}">Write New Post</a>
-	</li>
-	<li>
-		<a href="{% url 'logout' %}">Logout</a>
-	</li>
-</ul>
 <h1>Recent Posts</h1>
 {% if latest_blog_posts %}
 	<ul>
