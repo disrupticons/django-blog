@@ -1,6 +1,11 @@
 $(document).ready(function () {
 	toggleForm('replyToggle', 'replyForm');
 	toggleForm('editToggle', 'editForm');
+	$('.addLorem').click(function (e) {
+		e.preventDefault();
+		$('textarea').data('lorem', '1p');
+		$('textarea').lorem();
+	})
 })
 
 function toggleForm (anchorClass, formClass) {
